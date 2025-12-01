@@ -1,6 +1,7 @@
 ---
 layout: default
 ---
+{% comment %}
 {% unless site.data.resume %}
   <div class="post">
     <header class="post-header">
@@ -125,3 +126,10 @@ layout: default
     </article>
   </div>
 {% endunless %}
+{% endcomment %}
+
+{% if page.CV_pdf %}
+  <script>
+    window.location.href = "{{ page.CV_pdf | prepend: 'assets/pdf/' | relative_url }}";
+  </script>
+{% endif %}
