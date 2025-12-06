@@ -405,12 +405,10 @@ ninja.data = [{
           description: "",
           section: "Books",handler: () => {
               window.location.href = "/books/the_godfather/";
-            },},{id: "news-announcement-3",
-          title: 'Announcement_3',
+            },},{id: "news-aug-2025-our-survey-paper-compound-ai-systems-optimization-a-survey-of-methods-challenges-and-future-directions-has-been-accepted-to-emnlp-2025",
+          title: '[Aug. 2025] Our survey paper “Compound AI Systems Optimization: A Survey of Methods,...',
           description: "",
-          section: "News",handler: () => {
-              window.location.href = "/news/announcement_3/";
-            },},{id: "news-sep-2025-my-first-author-co-first-work-on-test-time-alignment-contrastive-gradient-guidance-for-test-time-preference-alignment-of-diffusion-models-has-been-submitted-to-iclr-2026",
+          section: "News",},{id: "news-sep-2025-my-first-author-co-first-work-on-test-time-alignment-contrastive-gradient-guidance-for-test-time-preference-alignment-of-diffusion-models-has-been-submitted-to-iclr-2026",
           title: '[Sep. 2025] My first author (co-first) work on test time alignment “Contrastive Gradient...',
           description: "",
           section: "News",},{id: "news-currently-i-am-applying-for-ms-programs-and-seeking-for-research-opportunites-in-fall-2026",
