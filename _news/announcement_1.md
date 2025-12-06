@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-Currently, I am applying for MS programs in Fall 2026.
+Currently, I am applying for MS programs and seeking for research opportunites in Fall 2026.

@@ -128,8 +128,8 @@ layout: default
 {% endunless %}
 {% endcomment %}
 
-{% if page.CV_pdf %}
+{% if page.cv_pdf %}
   <script>
-    window.location.href = "{{ page.CV_pdf | prepend: 'assets/pdf/' | relative_url }}";
+    window.location.href = "{{ page.cv_pdf | prepend: 'assets/pdf/' | relative_url }}";
   </script>
 {% endif %}
