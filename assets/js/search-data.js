@@ -416,12 +416,12 @@ ninja.data = [{
           description: "",
           section: "News",},{id: "projects-i-cos",
           title: 'I-COS',
-          description: "",
+          description: "CVPDL Final Project - Leveraging Inpainting to Compensate for Occluded Skeleton",
           section: "Projects",handler: () => {
               window.location.href = "/projects/1_project/";
-            },},{id: "projects-project-2",
-          title: 'project 2',
-          description: "a project with a background image and giscus comments",
+            },},{id: "projects-pupil-tracking",
+          title: 'Pupil tracking',
+          description: "CV Final",
           section: "Projects",handler: () => {
               window.location.href = "/projects/2_project/";
             },},{
