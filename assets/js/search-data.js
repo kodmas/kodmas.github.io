@@ -18,7 +18,7 @@ ninja.data = [{
           },
         },{id: "nav-projects",
           title: "projects",
-          description: "A growing collection of your cool projects.",
+          description: "List of my selected projects",
           section: "Navigation",
           handler: () => {
             window.location.href = "/projects/";
@@ -421,9 +421,14 @@ ninja.data = [{
               window.location.href = "/projects/1_project/";
             },},{id: "projects-pupil-tracking",
           title: 'Pupil tracking',
-          description: "CV Final",
+          description: "CV Final - Ganzin Pupil Tracking",
           section: "Projects",handler: () => {
               window.location.href = "/projects/2_project/";
+            },},{id: "projects-doomed-deadlock",
+          title: 'Doomed Deadlock',
+          description: "Game Programming Term Project",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/3_project/";
             },},{
         id: 'social-email',
         title: 'email',
