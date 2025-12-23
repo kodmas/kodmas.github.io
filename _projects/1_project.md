@@ -4,7 +4,7 @@ title: I-COS
 description: CVPDL Final Project - Leveraging Inpainting to Compensate for Occluded Skeleton
 img: assets/img/icos/icos.png
 importance: 1
-category: work
+category: course
 related_publications: false
 ---
 
