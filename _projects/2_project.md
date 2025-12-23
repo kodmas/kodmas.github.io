@@ -1,81 +1,24 @@
 ---
 layout: page
-title: project 2
-description: a project with a background image and giscus comments
-img: assets/img/3.jpg
-importance: 2
+title: Pupil tracking
+description: CV Final
+img: assets/img/ganzin/ganzin.png
+importance: 1
 category: work
-giscus_comments: true
 ---
 
-Every project has a beautiful feature showcase page.
-It's easy to include images in a flexible 3-column grid format.
-Make your photos 1/3, 2/3, or full width.
+- **Overview** This project focuses on pupil tracking through image segmentation, aiming to accurately identify pupil locations in eye images. While initially approaching the problem with a standard U-Net architecture, the team developed a robust pipeline utilizing DeepLabv3, advanced data augmentation, and a custom post-processing algorithm to handle challenges such as shadows, eyelashes, and variable camera angles.
+- **Technical Approach**
+    - **Model Architecture:** Transitioned from U-Net to DeepLabv3 using a ResNet34 encoder pre-trained on ImageNet to improve generalization and convergence speed.Utilized the segmentation-models-pytorch library for implementation.
+    - **Data Augmentation:** Employed albumentations for flexible augmentation, including horizontal flips, rotation, Gaussian noise, blur, and brightness/contrast adjustments. Implemented Homography transformation on the training set (S1-S4) to simulate different viewing angles, addressing the lack of angular diversity in the training data compared to the test set
+    - **Inference & Thresholding:** Generated probability masks with a lowered threshold of $0.4$ (pixel value $\approx 102$) to capture pupils obscured by shadows, which standard thresholds often missed.
 
-To give your project a background in the portfolio page, just add the img tag to the front matter like so:
-
-    ---
-    layout: page
-    title: project
-    description: a project with a background image
-    img: /assets/img/12.jpg
-    ---
-
-<div class="row">
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/1.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/3.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/5.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-<div class="caption">
-    Caption photos easily. On the left, a road goes through a tunnel. Middle, leaves artistically fall in a hipster photoshoot. Right, in another hipster photoshoot, a lumberjack grasps a handful of pine needles.
-</div>
-<div class="row">
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/5.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-<div class="caption">
-    This image can also have a caption. It's like magic.
-</div>
-
-You can also put regular text between your rows of images.
-Say you wanted to write a little bit about your project before you posted the rest of the images.
-You describe how you toiled, sweated, _bled_ for your project, and then... you reveal its glory in the next row of images.
-
-<div class="row justify-content-sm-center">
-    <div class="col-sm-8 mt-3 mt-md-0">
-        {% include figure.liquid path="assets/img/6.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm-4 mt-3 mt-md-0">
-        {% include figure.liquid path="assets/img/11.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-<div class="caption">
-    You can also have artistically styled 2/3 + 1/3 images, like these.
-</div>
-
-The code is simple.
-Just wrap your images with `<div class="col-sm">` and place them inside `<div class="row">` (read more about the <a href="https://getbootstrap.com/docs/4.4/layout/grid/">Bootstrap Grid</a> system).
-To make images responsive, add `img-fluid` class to each; for rounded corners and shadows use `rounded` and `z-depth-1` classes.
-Here's the code for the last row of images above:
-
-{% raw %}
-
-```html
-<div class="row justify-content-sm-center">
-  <div class="col-sm-8 mt-3 mt-md-0">
-    {% include figure.liquid path="assets/img/6.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-  </div>
-  <div class="col-sm-4 mt-3 mt-md-0">
-    {% include figure.liquid path="assets/img/11.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-  </div>
-</div>
-```
-
-{% endraw %}
+- **Post-Processing Pipeline:** To refine the raw model output, a multi-stage post-processing strategy was applied:
+    - **Artifact Removal:** Used Connected Components to eliminate disjointed noise. If multiple components existed, the system tracked the pupil center from the previous frame to select the correct region
+    - **Mask Filling:** Developed an iterative dilation method ($15 \times 15$ kernel) to fill gaps caused by eyelashes or reflections. This logic compared pixel intensity against the mask mean to ensure only dark (pupil-like) regions were filled
+    - **Edge Smoothing:** Applied a final dilation and erosion sequence ($31 \times 31$ kernel) to smooth jagged edges caused by the filling process
+    - **Confidence Scoring:** A binary confidence scoring system (1.0 or 0.0) was implemented based on mask heuristics
+        - Score 0.0: Assigned if the mask was on the image edge, had a drastically reduced area compared to the sequence average, or possessed a high average pixel intensity (indicating skin/sclera misclassification).
+        - Score 1.0: Assigned to valid masks with an area $> 20$ pixels
+  
+- **Results:** The proposed method demonstrated significant improvement over the baseline. The final ablation study showed that switching to DeepLabv3 and adding the custom mask filling/confidence scoring raised the public score from approximately 0.76 (U-Net) to 0.93514.
