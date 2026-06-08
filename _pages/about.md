@@ -25,7 +25,7 @@ latest_posts:
   limit: 3 # leave blank to include all the blog posts
 ---
 
-Hi, I'm Jui-Chao (Jerry). I recently graduated from [National Taiwan Univiersity](https://www.ntu.edu.tw/), where I received my Bachelor's degree in [Electrical Engineering](https://web.ee.ntu.edu.tw/) with a minor in [Computer Science](https://www.csie.ntu.edu.tw/) in June 2025. Currently, I am a research assistant at [NTU Computational Learning Lab](https://learner.csie.ntu.edu.tw/) advised by [Prof. Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/). Previously, I was also fortunated to be mentored by [Professor Hung-Yi Lee](https://speech.ee.ntu.edu.tw/~hylee/index.php) under [NTU Speech Lab](https://speech.ee.ntu.edu.tw/~hylee/index.php).
+Hi, I'm Jui-Chao (Jerry). I am an incoming MSCS student at [NYU Courant](https://cims.nyu.edu/dynamic/). I graduated from [National Taiwan Univiersity](https://www.ntu.edu.tw/), where I received my Bachelor's degree in [Electrical Engineering](https://web.ee.ntu.edu.tw/) with a minor in [Computer Science](https://www.csie.ntu.edu.tw/) in June 2025. Previously, I was also fortunated to be mentored by [Prof. Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/) under [NTU Computational Learning Lab](https://learner.csie.ntu.edu.tw/) and [Professor Hung-Yi Lee](https://speech.ee.ntu.edu.tw/~hylee/index.php) under [NTU Speech Lab](https://speech.ee.ntu.edu.tw/~hylee/index.php).
 
 I am interested in **diffusion models**, **alignment problem** and **multimodal learning**. My goal is to develop solutions to steer agents to generate precise and preferred response. My previous research includes test-time alignment on diffusion models, agent system optimization and collaborative filtering.
 
